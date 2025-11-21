@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -17,9 +18,9 @@
       <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="413.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label prefHeight="53.0" prefWidth="374.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label prefHeight="53.0" prefWidth="393.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <GridPane prefHeight="352.0" prefWidth="347.0" GridPane.rowIndex="1">
@@ -34,16 +35,15 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.3333740234375" minHeight="10.0" prefHeight="80.3333740234375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.33331298828125" minHeight="3.6666259765625" prefHeight="17.6666259765625" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="eventDate" onAction="#eventDateEntered" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <TextField fx:id="creator850" onAction="#creator850Entered" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" promptText="\@uncw.edu" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="850 number:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -84,6 +84,7 @@
             <TextField fx:id="eventLocation" onAction="#eventLocationEntered" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
+            <DatePicker prefHeight="21.0" prefWidth="265.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

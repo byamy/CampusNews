@@ -16,9 +16,9 @@
       <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="413.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label prefHeight="53.0" prefWidth="374.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label prefHeight="53.0" prefWidth="395.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <GridPane prefHeight="352.0" prefWidth="347.0" GridPane.rowIndex="1">
@@ -31,17 +31,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="deleteEventButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#deleteEventButtonPressed" style="-fx-background-color: #ffd942;" text="Delete Event" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button fx:id="deleteEventButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#deleteEventButtonPressed" prefHeight="66.0" prefWidth="225.0" style="-fx-background-color: #ffd942;" text="Delete Event" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="viewEventButton" mnemonicParsing="false" onAction="#viewEventButtonPressed" style="-fx-background-color: #ffd942;" text="View Events" GridPane.halignment="CENTER">
+            <Button fx:id="viewEventButton" alignment="CENTER" mnemonicParsing="false" onAction="#viewEventButtonPressed" prefHeight="61.0" prefWidth="219.0" style="-fx-background-color: #ffd942;" text="View Events" GridPane.halignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="createEventButton" mnemonicParsing="false" onAction="#createEventButtonPressed" style="-fx-background-color: #ffd942;" text="Create Event" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="createEventButton" alignment="CENTER" mnemonicParsing="false" onAction="#createEventButtonPressed" prefHeight="68.0" prefWidth="218.0" style="-fx-background-color: #ffd942;" text="Create Event" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

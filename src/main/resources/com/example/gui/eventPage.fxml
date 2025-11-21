@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,9 +22,9 @@
       <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="413.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label prefHeight="53.0" prefWidth="374.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label prefHeight="49.0" prefWidth="401.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <GridPane prefHeight="352.0" prefWidth="347.0" GridPane.rowIndex="1">
@@ -36,17 +37,17 @@
             <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ScrollPane fx:id="eventDisplay" onDragDetected="#eventDisplayClicked" prefHeight="200.0" prefWidth="200.0" />
             <GridPane GridPane.columnIndex="1">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.666656494140625" minWidth="7.0" prefWidth="7.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="85.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="1.66668701171875" prefWidth="7.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="81.99995930989583" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="1.66668701171875" prefWidth="10.666707356770829" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="50.666656494140625" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="102.66667683919269" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="57.666666666666664" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="3.6666666666666643" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="74.66668701171875" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="143.33331298828122" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -54,25 +55,61 @@
                   <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <CheckBox fx:id="userStudentCheckBox" mnemonicParsing="false" onAction="#userStudentCheckBoxAction" text="Student" textFill="#ffd942" GridPane.columnIndex="1" GridPane.valignment="TOP" />
-                  <CheckBox fx:id="userFacultyCheckBox" mnemonicParsing="false" onAction="#userFacultyCheckBoxAction" text="Faculty" textFill="#ffd942" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                  <CheckBox fx:id="userVisitorCheckBox" mnemonicParsing="false" onAction="#userVisitorCheckBoxAction" text="Visitor" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                  <TextField fx:id="userEmail" onAction="#userEmailEntered" prefHeight="22.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter email:" wrappingWidth="78.0595703125" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <CheckBox fx:id="userStudentCheckBox" mnemonicParsing="false" onAction="#userStudentCheckBoxAction" text="Student" textFill="#ffd942" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                  <CheckBox fx:id="userFacultyCheckBox" mnemonicParsing="false" onAction="#userFacultyCheckBoxAction" text="Faculty" textFill="#ffd942" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <CheckBox fx:id="userVisitorCheckBox" mnemonicParsing="false" onAction="#userVisitorCheckBoxAction" text="Visitor" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                  <TextField fx:id="userEmail" onAction="#userEmailEntered" prefHeight="22.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter email:" wrappingWidth="78.0595703125" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="numPeople" onAction="#numPeopleEntered" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="# of People" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="numPeople" onAction="#numPeopleEntered" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="# of People" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
                </children>
             </GridPane>
-            <Button fx:id="rvspButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rsvpButtonPressed" style="-fx-background-color: GOLD;" text="RSVP" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="rvspButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rsvpButtonPressed" style="-fx-background-color: GOLD;" text="RSVP" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <GridPane>
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.33331298828125" minWidth="10.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="117.33335367838541" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.3333028157552" minWidth="10.0" prefWidth="116.66664632161456" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.33331298828125" minWidth="10.0" prefWidth="120.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="298.6666564941406" minHeight="10.0" prefHeight="43.333353678385436" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="298.6666564941406" minHeight="10.0" prefHeight="273.99997965494794" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="154.66668701171875" minHeight="10.0" prefHeight="31.333343505859375" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ListView fx:id="athleticEvent" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="clubEvent" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ListView fx:id="academicEvent" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="Atheltics" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="Clubs" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ffd942" strokeType="OUTSIDE" strokeWidth="0.0" text="Academics" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>
