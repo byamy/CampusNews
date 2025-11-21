@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.CreatePageController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="551.0" minWidth="10.0" prefWidth="518.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="196.0" minHeight="0.0" prefHeight="130.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="413.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Label prefHeight="53.0" prefWidth="374.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <GridPane prefHeight="352.0" prefWidth="347.0" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="0.0" prefWidth="8.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="147.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="16.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="267.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="6.0" prefWidth="70.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField fx:id="eventDate" onAction="#eventDateEntered" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="creator850" onAction="#creator850Entered" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="850 number:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="UNCW email:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Event date:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Event time:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="100.0" text="Event location:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Event description:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefWidth="376.0" text="Please enter the following information:" textFill="#ffd942" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="createEventButton" mnemonicParsing="false" onAction="#createEventButtonPressed" style="-fx-background-color: GOLD;" text="CREATE EVENT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="BASELINE" />
+            <TextField fx:id="eventTime" onAction="#eventTimeEntered" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="eventLocation" onAction="#eventLocationEntered" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
