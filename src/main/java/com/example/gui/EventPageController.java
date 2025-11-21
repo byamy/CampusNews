@@ -8,7 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 
 
-public class ViewPageController {
+public class EventPageController {
 
     @FXML
     private TextField numPeople;
