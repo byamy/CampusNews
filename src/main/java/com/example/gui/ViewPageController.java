@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 public class ViewPageController {
 
     @FXML
+    private TextField numPeople;
+
+    @FXML
     private CheckBox userStudentCheckBox;
 
     @FXML
@@ -55,6 +58,10 @@ public class ViewPageController {
     @FXML
     private void userEmailEntered(ActionEvent event) {
         userEmail.setEditable(false);
+    }
+
+    @FXML
+    private void numPeopleEntered(ActionEvent event) {
     }
 
     @FXML
