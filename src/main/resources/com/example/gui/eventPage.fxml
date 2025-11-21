@@ -64,7 +64,7 @@
                </children>
             </GridPane>
             <Button fx:id="rvspButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rsvpButtonPressed" style="-fx-background-color: GOLD;" text="RSVP" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="Return Home" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>
