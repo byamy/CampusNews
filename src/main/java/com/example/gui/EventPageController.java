@@ -27,27 +27,28 @@ public class EventPageController {
     @FXML private Button rsvpButton;
     @FXML private Button returnHomeButton;
 
-    // Master event list (same objects as in EventsManager)
+    // Main Event List
     private final ObservableList<Events> allEvents       = FXCollections.observableArrayList();
+    // Other Event Lists
     private final ObservableList<Events> athleticEvents  = FXCollections.observableArrayList();
     private final ObservableList<Events> clubEvents      = FXCollections.observableArrayList();
     private final ObservableList<Events> academicEvents  = FXCollections.observableArrayList();
 
-    // ---------------- Initialization ----------------
+
     @FXML
     public void initialize() {
         // Load events from EventsManager
         allEvents.clear();
         allEvents.addAll(EventsManager.getAllEvents());
 
-        // Show them in the three columns
+
         refreshEventLists();
     }
 
-    // ---------------- Checkbox / field handlers (optional logging) ----------------
+
 
     @FXML private void userStudentCheckBoxAction(ActionEvent event) {
-        // If you want only one checked at a time:
+
         if (userStudentCheckBox.isSelected()) {
             userFacultyCheckBox.setSelected(false);
             userVisitorCheckBox.setSelected(false);
@@ -76,7 +77,7 @@ public class EventPageController {
         rsvpButtonPressed(null);
     }
 
-    // ---------------- RSVP logic ----------------
+    // RSVP Button
 
     @FXML
     private void rsvpButtonPressed(ActionEvent event) {
@@ -113,7 +114,7 @@ public class EventPageController {
             role = "Visitor";
         }
 
-        // Add one RSVP entry per person (so count = list size)
+        // Adds one RSVP count per person
         for (int i = 0; i < peopleCount; i++) {
             selectedEvent.addRSVP(new User(role, email));
         }
@@ -124,12 +125,12 @@ public class EventPageController {
         // Reload display (including RSVP counts)
         refreshEventLists();
 
-        // Optional: clear inputs
+        // clear inputs
         numPeople.clear();
     }
 
     private Events getSelectedEvent() {
-        // Find which column has a selection and map index -> Events object
+
         int index = athleticEvent.getSelectionModel().getSelectedIndex();
         if (index >= 0 && index < athleticEvents.size()) {
             return athleticEvents.get(index);
@@ -162,7 +163,7 @@ public class EventPageController {
             return;
         }
 
-        // Build popup text
+
         String details =
                 "Title: " + selected.getTitle() + "\n" +
                         "Description: " + selected.getDescription() + "\n" +
@@ -176,7 +177,7 @@ public class EventPageController {
         alert.setHeaderText(selected.getTitle());
         alert.setContentText(details);
 
-        // Make it match your app’s teal/gold theme
+
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setStyle(
                 "-fx-background-color: TEAL;" +
@@ -188,9 +189,9 @@ public class EventPageController {
     }
 
 
-    // ---------------- Event Management ----------------
 
-    // This can be called if another controller wants to refresh events
+
+    // Method to allow other controllers to refresh the event lists so create and delete can affect main lists
     @FXML
     public void refreshEventLists() {
         // Ensure we use the latest events from the manager
@@ -211,7 +212,7 @@ public class EventPageController {
             }
         }
 
-        // Sort by date using LocalDate helper
+        // Sort by date using LocalDate
         FXCollections.sort(athleticEvents, Comparator.comparing(Events::getDateAsLocalDate));
         FXCollections.sort(clubEvents, Comparator.comparing(Events::getDateAsLocalDate));
         FXCollections.sort(academicEvents, Comparator.comparing(Events::getDateAsLocalDate));
@@ -229,7 +230,7 @@ public class EventPageController {
     }
 
 
-    // ---------------- Utility ----------------
+    // Alert Method for prompts in other controllers
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

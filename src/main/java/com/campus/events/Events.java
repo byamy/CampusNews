@@ -6,15 +6,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Events {
+public abstract class Events implements RSVPable {
+
     private String title;
     private String description;
     private String date;
     private String time;
     private String location;
-    private User creator; // new creator field
 
-    private List<User> rsvpedUsers = new ArrayList<>();
+    private User creator;
+    private List<User> rsvpedUsers;
 
     public Events(String title, String description, String date, String time, String location, User creator) {
         this.title = title;
@@ -23,51 +24,43 @@ public abstract class Events {
         this.time = time;
         this.location = location;
         this.creator = creator;
+        this.rsvpedUsers = new ArrayList<>();
     }
 
-    // Getters and Setters
+
+    public abstract String getEventType();
+
+    // Getters/setters
     public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-
     public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
     public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
-
     public String getTime() { return time; }
-    public void setTime(String time) { this.time = time; }
-
     public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
 
     public User getCreator() { return creator; }
     public void setCreator(User creator) { this.creator = creator; }
 
+    // RSVPable implementation
+    @Override
     public void addRSVP(User user) {
         if (!rsvpedUsers.contains(user)) {
             rsvpedUsers.add(user);
         }
     }
 
-    public List<User> getRsvpedUsers() { return rsvpedUsers; }
-
+    @Override
     public int getRsvpCount() {
         return rsvpedUsers.size();
     }
 
+    public List<User> getRsvpedUsers() { return rsvpedUsers; }
+
 
     public LocalDate getDateAsLocalDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        return LocalDate.parse(this.date, formatter);
+        return LocalDate.parse(this.date, DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     public String getType() {
-        if (this instanceof Athletic) return "Athletic";
-        if (this instanceof Academic) return "Academic";
-        if (this instanceof Club) return "Club";
-        return "Unknown";
+        return getEventType();
     }
-
-    public abstract String getEventType();
 }

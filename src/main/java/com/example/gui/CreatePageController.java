@@ -44,7 +44,7 @@ public class CreatePageController {
                 setDisable(empty || date.isBefore(LocalDate.now()));
             }
         });
-// Populate time picker with 15-minute intervals
+// TimePicker given 15 minute intervals
         ObservableList<String> times = FXCollections.observableArrayList();
         LocalTime t = LocalTime.of(6, 0); // Start earliest time
         while (!t.equals(LocalTime.of(23, 45))) {
@@ -89,7 +89,7 @@ public class CreatePageController {
         }
 
 
-        // We’ll treat description as both the title and the full description
+
         String title = description;
 
         User creator = new User(creatorId, creatorMail);
@@ -114,10 +114,10 @@ public class CreatePageController {
         refreshEventListView(newEvent);
 
 
-        // Give user feedback
+        // Prompt that event was made
         showAlert("Success", "Event created successfully!");
 
-        // Clear form
+        // Clear variables
         creator850.clear();
         creatorEmail.clear();
         eventDatePicker.setValue(null);
@@ -144,17 +144,22 @@ public class CreatePageController {
         SceneSwitch.goTo("homepage.fxml");
     }
 
-    // These just move focus through the form in a nice way
+    //
 
-    @FXML private void creator850Entered(ActionEvent event)      { creatorEmail.requestFocus(); }
-    @FXML private void creatorEmailEntered(ActionEvent event)    { eventDatePicker.requestFocus(); }
+    @FXML private void creator850Entered(ActionEvent event)
+    { creatorEmail.requestFocus(); }
+    @FXML private void creatorEmailEntered(ActionEvent event)
+    { eventDatePicker.requestFocus(); }
     @FXML
     private void eventDateEntered(ActionEvent event) {
         eventTimePicker.requestFocus();
     }
-    @FXML private void eventTimeEntered(ActionEvent event)       { eventLocation.requestFocus(); }
-    @FXML private void eventLocationEntered(ActionEvent event)   { eventDescription.requestFocus(); }
-    @FXML private void eventDescriptionEntered(ActionEvent event){ createEventButtonPressed(null); }
+    @FXML private void eventTimeEntered(ActionEvent event)
+    { eventLocation.requestFocus(); }
+    @FXML private void eventLocationEntered(ActionEvent event)
+    { eventDescription.requestFocus(); }
+    @FXML private void eventDescriptionEntered(ActionEvent event)
+    { createEventButtonPressed(null); }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
