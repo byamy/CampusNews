@@ -6,121 +6,154 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.EventPageController">
-
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="580" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints prefHeight="60" />
-        <RowConstraints prefHeight="440" />
-    </rowConstraints>
-
-
-    <Label text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
-        <font>
-            <Font name="System Bold" size="36" />
-        </font>
-    </Label>
-
-
-    <GridPane hgap="20" vgap="10" GridPane.rowIndex="1">
-        <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-        </padding>
-
-        <columnConstraints>
-            <ColumnConstraints prefWidth="150.0" />
-            <ColumnConstraints prefWidth="150.0" />
-            <ColumnConstraints maxWidth="126.33331298828125" minWidth="123.0" prefWidth="123.0" />
-            <ColumnConstraints maxWidth="132.66666666666663" minWidth="129.33335367838538" prefWidth="132.66666666666663" />
-        </columnConstraints>
-
-        <rowConstraints>
-            <RowConstraints prefHeight="30.0" />
-            <RowConstraints prefHeight="360.0" />
-            <RowConstraints prefHeight="50.0" />
-         <RowConstraints />
-        </rowConstraints>
-
-
-        <Text fill="#132970" text="Athletics" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <font><Font name="System Bold" size="14" /></font>
-        </Text>
-        <Text fill="#132970" text="Clubs" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <font><Font name="System Bold" size="14" /></font>
-        </Text>
-        <Text fill="#132970" text="Academics" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <font><Font name="System Bold" size="14" /></font>
-        </Text>
-
-
-        <ListView fx:id="athleticEvent" prefHeight="360" prefWidth="150" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-        <ListView fx:id="clubEvent" prefHeight="360" prefWidth="150" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-        <ListView fx:id="academicEvent" prefHeight="360.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-
-
-        <GridPane vgap="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
-
-            <rowConstraints>
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-                <RowConstraints prefHeight="30" />
-            </rowConstraints>
-
-            <CheckBox fx:id="userStudentCheckBox" onAction="#userStudentCheckBoxAction" text="Student" textFill="#ffd942" GridPane.rowIndex="0">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font></CheckBox>
-            <CheckBox fx:id="userFacultyCheckBox" onAction="#userFacultyCheckBoxAction" text="Faculty" textFill="#ffd942" GridPane.rowIndex="1">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font></CheckBox>
-            <CheckBox fx:id="userVisitorCheckBox" onAction="#userVisitorCheckBoxAction" text="Visitor" textFill="#ffd942" GridPane.rowIndex="2">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font></CheckBox>
-
-            <Text fill="#132970" text="Enter email:" GridPane.rowIndex="3">
-                <font><Font name="System Bold" size="14" /></font>
-            </Text>
-            <TextField fx:id="userEmail" onAction="#userEmailEntered" GridPane.rowIndex="4" />
-
-            <Text fill="#132970" text="Number of People:" GridPane.rowIndex="5">
-                <font>
-                    <Font name="System Bold" size="14" />
-                </font>
-            </Text>
-            <TextField fx:id="numPeople" onAction="#numPeopleEntered" GridPane.rowIndex="6" />
-         <columnConstraints>
-            <ColumnConstraints />
-         </columnConstraints>
-
-        </GridPane>
-
-
-        <Button fx:id="rsvpButton" onAction="#rsvpButtonPressed" style="-fx-background-color: GOLD;" text="RSVP" GridPane.columnIndex="3" GridPane.rowIndex="2">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-        <Button fx:id="returnHomeButton" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-        <Button fx:id="viewDetailsButton" onAction="#viewDetailsButtonPressed" style="-fx-background-color: GOLD;" text="VIEW DETAILS" GridPane.columnIndex="3" GridPane.rowIndex="3">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-
-    </GridPane>
-</GridPane>
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.EventPageController">
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;">
+            
+                      <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="580" />
+                </columnConstraints>
+                <rowConstraints>
+                  <RowConstraints maxHeight="40.0" minHeight="6.0" prefHeight="16.0" />
+                  <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="58.0" />
+                    <RowConstraints maxHeight="66.0" minHeight="44.0" prefHeight="55.0" />
+                    <RowConstraints maxHeight="407.0" minHeight="367.0" prefHeight="369.0" />
+                </rowConstraints>
+            
+                  
+                      <Label text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="36" />
+                    </font>
+                </Label>
+            
+                  
+                      <GridPane hgap="20" vgap="10" GridPane.rowIndex="3">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+            
+                          <columnConstraints>
+                        <ColumnConstraints prefWidth="150.0" />
+                        <ColumnConstraints prefWidth="150.0" />
+                        <ColumnConstraints maxWidth="126.33331298828125" minWidth="123.0" prefWidth="123.0" />
+                        <ColumnConstraints maxWidth="132.66666666666663" minWidth="129.33335367838538" prefWidth="132.66666666666663" />
+                    </columnConstraints>
+            
+                          <rowConstraints>
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="360.0" />
+                        <RowConstraints prefHeight="50.0" />
+                     <RowConstraints />
+                    </rowConstraints>
+            
+                  
+                          <Text fill="#132970" text="Athletics" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                        <font>
+                        <Font name="System Bold" size="14" />
+                     </font>
+                    </Text>
+                    <Text fill="#132970" text="Clubs" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                        <font>
+                        <Font name="System Bold" size="14" />
+                     </font>
+                    </Text>
+                    <Text fill="#132970" text="Academics" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                        <font>
+                        <Font name="System Bold" size="14" />
+                     </font>
+                    </Text>
+            
+                  
+                          <ListView fx:id="athleticEvent" prefHeight="360" prefWidth="150" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                    <ListView fx:id="clubEvent" prefHeight="360" prefWidth="150" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                    <ListView fx:id="academicEvent" prefHeight="360.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+            
+                  
+                          <GridPane vgap="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            
+                              <rowConstraints>
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                            <RowConstraints prefHeight="30" />
+                        </rowConstraints>
+            
+                              <CheckBox fx:id="userStudentCheckBox" onAction="#userStudentCheckBoxAction" text="Student" textFill="#ffd942" GridPane.rowIndex="0">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </CheckBox>
+                        <CheckBox fx:id="userFacultyCheckBox" onAction="#userFacultyCheckBoxAction" text="Faculty" textFill="#ffd942" GridPane.rowIndex="1">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </CheckBox>
+                        <CheckBox fx:id="userVisitorCheckBox" onAction="#userVisitorCheckBoxAction" text="Visitor" textFill="#ffd942" GridPane.rowIndex="2">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </CheckBox>
+            
+                              <Text fill="#132970" text="Enter email:" GridPane.rowIndex="3">
+                            <font>
+                           <Font name="System Bold" size="14" />
+                        </font>
+                        </Text>
+                        <TextField fx:id="userEmail" onAction="#userEmailEntered" GridPane.rowIndex="4" />
+            
+                              <Text fill="#132970" text="Number of People:" GridPane.rowIndex="5">
+                            <font>
+                                <Font name="System Bold" size="14" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="numPeople" onAction="#numPeopleEntered" GridPane.rowIndex="6" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                     </columnConstraints>
+            
+                          </GridPane>
+            
+                  
+                          <Button fx:id="rsvpButton" onAction="#rsvpButtonPressed" style="-fx-background-color: GOLD;" text="RSVP" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                    <Button fx:id="returnHomeButton" onAction="#returnHomeButtonPressed" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                    <Button fx:id="viewDetailsButton" onAction="#viewDetailsButtonPressed" style="-fx-background-color: GOLD;" text="VIEW DETAILS" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+            
+                      </GridPane>
+               <ImageView fitHeight="75.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <image>
+                     <Image url="@uncwlogonavy.png" />
+                  </image>
+               </ImageView>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

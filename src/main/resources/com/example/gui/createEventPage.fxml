@@ -7,125 +7,153 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.CreatePageController">
-
-    <!-- Top and bottom padding for breathing room -->
-    <padding>
-        <Insets bottom="40" top="20" />
-    </padding>
-
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" prefWidth="500.0" />
-    </columnConstraints>
-
-    <rowConstraints>
-        <RowConstraints prefHeight="70" />     <!-- Title -->
-        <RowConstraints prefHeight="360" />    <!-- Form -->
-    </rowConstraints>
-
-    <children>
-
-        <!-- TITLE -->
-        <Label alignment="CENTER" text="Create UNCW Event" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-
-        <!-- MAIN INPUT FORM -->
-        <GridPane hgap="12" vgap="12" GridPane.rowIndex="1">
-            <padding>
-                <Insets left="20" right="20" top="10" />
-            </padding>
-
-            <columnConstraints>
-                <ColumnConstraints prefWidth="160" />
-                <ColumnConstraints prefWidth="240" />
-                <ColumnConstraints prefWidth="100" /> <!-- for side-by-side buttons -->
-            </columnConstraints>
-
-            <rowConstraints>
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="32" />
-                <RowConstraints prefHeight="40" /> <!-- buttons -->
-                <RowConstraints prefHeight="60" /> <!-- preview list -->
-            </rowConstraints>
-
-            <children>
-
-                <!-- 850 Number -->
-                <Label text="850 Number:" textFill="#132970" GridPane.columnIndex="0" GridPane.rowIndex="0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <TextField fx:id="creator850" onAction="#creator850Entered" promptText="enter 9 digit 850" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-                <!-- Email -->
-                <Label text="UNCW Email:" textFill="#132970" GridPane.columnIndex="0" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" promptText="example@uncw.edu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-                <!-- Event Date -->
-                <Label text="Event Date:" textFill="#132970" GridPane.columnIndex="0" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <DatePicker fx:id="eventDatePicker" onAction="#eventDateEntered" promptText="MM/DD/YEAR" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-                <!-- Event Time -->
-                <Label text="Event Time:" textFill="#132970" GridPane.columnIndex="0" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <ComboBox fx:id="eventTimePicker" onAction="#eventTimeEntered" promptText="Select Time" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                <!-- Location -->
-                <Label text="Event Location:" textFill="#132970" GridPane.columnIndex="0" GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <TextField fx:id="eventLocation" onAction="#eventLocationEntered" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-                <!-- Description -->
-                <Label text="Event Description:" textFill="#132970" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
-                <!-- Event Type -->
-                <Label text="Event Type:" textFill="#132970" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="6">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-                <ComboBox fx:id="eventTypeSelector" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-
-                <!-- BUTTONS SIDE BY SIDE -->
-                <Button fx:id="createEventButton" onAction="#createEventButtonPressed" prefWidth="120" style="-fx-background-color: GOLD;" text="CREATE" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-
-                <Button fx:id="returnHomeButton" onAction="#returnHomeButtonPressed" prefWidth="90" style="-fx-background-color: GOLD;" text="HOME" GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-
-                <!-- BOTTOM PREVIEW BOX (lifted) -->
-                <ListView fx:id="eventListView" maxHeight="60" minHeight="45" prefHeight="55" prefWidth="340" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
-            </children>
-        </GridPane>
-    </children>
-</GridPane>
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.CreatePageController">
+   <center>
+      <AnchorPane>
+         <children>
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;">
+            
+                                                                <!-- Top and bottom padding for breathing room -->
+                <padding>
+                    <Insets bottom="20.0" top="20.0" />
+                </padding>
+            
+                                                                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" prefWidth="500.0" />
+                </columnConstraints>
+            
+                                                                <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                    <RowConstraints prefHeight="70" />     <!-- Title -->
+                    <RowConstraints prefHeight="360" />    <!-- Form -->
+                </rowConstraints>
+            
+                                                                <children>
+            
+                                                                                <!-- TITLE -->
+                    <Label alignment="CENTER" text="Create Event" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <font>
+                            <Font name="System Bold" size="36.0" />
+                        </font>
+                    </Label>
+            
+                                                                                                  <!-- MAIN INPUT FORM -->
+                    <GridPane hgap="12" vgap="12" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                        <padding>
+                            <Insets left="20" right="20" top="10" />
+                        </padding>
+            
+                                                                                                      <columnConstraints>
+                            <ColumnConstraints />
+                            <ColumnConstraints maxWidth="337.0" minWidth="179.0" prefWidth="318.0" />
+                            <ColumnConstraints maxWidth="154.0" minWidth="84.0" prefWidth="107.0" /> <!-- for side-by-side buttons -->
+                        </columnConstraints>
+            
+                                                                                                      <rowConstraints>
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" /> <!-- buttons -->
+                            <RowConstraints valignment="CENTER" vgrow="ALWAYS" /> <!-- preview list -->
+                        </rowConstraints>
+            
+                                                                                                      <children>
+            
+                                                                                                          <!-- 850 Number -->
+                            <Label text="850 Number:" textFill="#132970" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <TextField fx:id="creator850" onAction="#creator850Entered" promptText="enter 9 digit 850" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+            
+                                                                                                          <!-- Email -->
+                            <Label text="UNCW Email:" textFill="#132970" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" promptText="example@uncw.edu" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            
+                                                                                                          <!-- Event Date -->
+                            <Label text="Event Date:" textFill="#132970" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <DatePicker fx:id="eventDatePicker" onAction="#eventDateEntered" promptText="MM/DD/YEAR" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+            
+                                                                                                          <!-- Event Time -->
+                            <Label text="Event Time:" textFill="#132970" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <ComboBox fx:id="eventTimePicker" onAction="#eventTimeEntered" promptText="Select Time" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            
+                                                                                                          <!-- Location -->
+                            <Label text="Event Location:" textFill="#132970" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <TextField fx:id="eventLocation" onAction="#eventLocationEntered" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+            
+                                                                                                          <!-- Description -->
+                            <Label text="Event Description:" textFill="#132970" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" prefWidth="306.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+            
+                                                                                                          <!-- Event Type -->
+                            <Label text="Event Type:" textFill="#132970" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            <ComboBox fx:id="eventTypeSelector" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+            
+                                                                                                          <!-- BUTTONS SIDE BY SIDE -->
+                            <Button fx:id="createEventButton" onAction="#createEventButtonPressed" style="-fx-background-color: GOLD;" text="CREATE EVENT" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+            
+                                                                                                          <Button fx:id="returnHomeButton" onAction="#returnHomeButtonPressed" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: GOLD;" text="RETURN HOME" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+            
+                                                                                                          <!-- BOTTOM PREVIEW BOX (lifted) -->
+                            <ListView fx:id="eventListView" prefHeight="61.0" prefWidth="552.0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                        </children>
+                    </GridPane>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" />
+                  <ImageView fitHeight="75.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@uncwlogonavy.png" />
+                     </image>
+                  </ImageView>
+                </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
