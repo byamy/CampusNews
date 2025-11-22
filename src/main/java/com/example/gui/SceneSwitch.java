@@ -5,21 +5,38 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
 public class SceneSwitch {
-    private static Stage mainStage;
 
+    private static Stage primaryStage;
+
+    // Set the primary stage at application start
     public static void setStage(Stage stage) {
-        mainStage = stage;
+        primaryStage = stage;
     }
 
-    public static void goTo(String fxml) {
+    // Switch scenes
+    public static void goTo(String fxmlFile) {
         try {
-            Parent root = FXMLLoader.load(SceneSwitch.class.getResource(fxml));
-            mainStage.setScene(new Scene(root));
-            mainStage.show();
-        } catch (Exception e) {
+            FXMLLoader loader = new FXMLLoader(SceneSwitch.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Load FXML and return the loader to access the controller
+    public static FXMLLoader loadFXML(String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SceneSwitch.class.getResource(fxmlFile));
+        loader.load();
+        return loader;
+    }
+
+    // Optionally get the primary stage anywhere
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 }

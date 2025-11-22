@@ -1,110 +1,139 @@
 package com.example.gui;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import com.campus.events.Events;
+import com.campus.events.Athletic;
+import com.campus.events.Academic;
+import com.campus.events.Club;
+import com.campus.model.EventsManager;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import java.util.Comparator;
 
 public class EventPageController {
 
-    @FXML
-    private TextField numPeople;
+    @FXML private ListView<String> athleticEvent;
+    @FXML private ListView<String> clubEvent;
+    @FXML private ListView<String> academicEvent;
+    @FXML private CheckBox userStudentCheckBox;
+    @FXML private CheckBox userFacultyCheckBox;
+    @FXML private CheckBox userVisitorCheckBox;
+    @FXML private TextField userEmail;
+    @FXML private TextField numPeople;
+    @FXML private Button rsvpButton;
+    @FXML private Button returnHomeButton;
 
-    @FXML
-    private CheckBox userStudentCheckBox;
+    // Master event list
+    private final ObservableList<Events> allEvents = FXCollections.observableArrayList();
 
-    @FXML
-    private CheckBox userFacultyCheckBox;
+    // Type-specific lists
+    private final ObservableList<Events> athleticEvents = FXCollections.observableArrayList();
+    private final ObservableList<Events> clubEvents = FXCollections.observableArrayList();
+    private final ObservableList<Events> academicEvents = FXCollections.observableArrayList();
 
+    // ---------------- Initialization ----------------
     @FXML
-    private CheckBox userVisitorCheckBox;
+    public void initialize() {
+        // Pull all events from EventsManager
+        allEvents.clear();
+        allEvents.addAll(EventsManager.getAllEvents());
 
-    @FXML
-    private Button returnHomeButton;
-
-    @FXML
-    private Button rsvpButton;
-
-    @FXML
-    private TextField userEmail;
-
-    @FXML
-    private ScrollPane eventDisplay;
-
-    @FXML
-    private void userStudentCheckBoxAction(ActionEvent event) {
-        userStudentCheckBox.setSelected(true);
+        // Refresh the lists so each ListView shows events by type and sorted by date
+        refreshEventLists();
     }
 
-    @FXML
-    private void userFacultyCheckBoxAction(ActionEvent event) {
-        userFacultyCheckBox.setSelected(true);
+    // ---------------- Event Handlers ----------------
+    @FXML private void userStudentCheckBoxAction(ActionEvent event) {
+        System.out.println("Student checkbox toggled: " + userStudentCheckBox.isSelected());
     }
 
-    @FXML
-    private void userVisitorCheckBoxAction(ActionEvent event) {
-        userVisitorCheckBox.setSelected(true);
+    @FXML private void userFacultyCheckBoxAction(ActionEvent event) {
+        System.out.println("Faculty checkbox toggled: " + userFacultyCheckBox.isSelected());
     }
 
-
-    /**
-     *          // add code
-     *          // needs to gather user email and store it somewhere
-     * @param event
-     */
-    @FXML
-    private void userEmailEntered(ActionEvent event) {
-        userEmail.setEditable(false);
+    @FXML private void userVisitorCheckBoxAction(ActionEvent event) {
+        System.out.println("Visitor checkbox toggled: " + userVisitorCheckBox.isSelected());
     }
 
-    @FXML
-    private void numPeopleEntered(ActionEvent event) {
+    @FXML private void userEmailEntered(ActionEvent event) {
+        System.out.println("User email entered: " + userEmail.getText());
     }
 
-    @FXML
-    private void returnHomeButtonPressed(ActionEvent event) {
+    @FXML private void numPeopleEntered(ActionEvent event) {
+        System.out.println("# of people entered: " + numPeople.getText());
+    }
+
+    @FXML private void rsvpButtonPressed(ActionEvent event) {
+        showAlert("RSVP", "RSVP functionality not implemented yet.");
+    }
+
+    @FXML private void returnHomeButtonPressed(ActionEvent event) {
         SceneSwitch.goTo("homepage.fxml");
     }
 
-    /**
-     *      // add code
-     *
-     *      // big list needs to display with event time info location etc and needs to be able
-     *      // to be itemized so a user can click a specific event when rsvp or simply look
-     *
-     */
-    @FXML
-    private void eventDisplayClicked(ActionEvent event) {
+    // ---------------- Event Management ----------------
+    public void addEvent(Events event) {
+        allEvents.add(event);
 
+        if (event instanceof Athletic) {
+            athleticEvents.add(event);
+        } else if (event instanceof Club) {
+            clubEvents.add(event);
+        } else if (event instanceof Academic) {
+            academicEvents.add(event);
+        }
+
+        // Refresh all lists and sort them
+        refreshEventLists();
+    }
+
+    @FXML
+    public void refreshEventLists() {
+        // Clear type-specific lists
+        athleticEvents.clear();
+        clubEvents.clear();
+        academicEvents.clear();
+
+        // Add events to the respective lists
+        for (Events e : allEvents) {
+            if (e instanceof Athletic) {
+                athleticEvents.add(e);
+            } else if (e instanceof Club) {
+                clubEvents.add(e);
+            } else if (e instanceof Academic) {
+                academicEvents.add(e);
+            }
+        }
+
+        // Sort each list by date
+        FXCollections.sort(athleticEvents, Comparator.comparing(Events::getDate));
+        FXCollections.sort(clubEvents, Comparator.comparing(Events::getDate));
+        FXCollections.sort(academicEvents, Comparator.comparing(Events::getDate));
+
+        // Update the ListViews
+        updateListView(athleticEvent, athleticEvents);
+        updateListView(clubEvent, clubEvents);
+        updateListView(academicEvent, academicEvents);
+    }
+
+    private void updateListView(ListView<String> listView, ObservableList<Events> events) {
+        listView.getItems().clear();
+        for (Events e : events) {
+            listView.getItems().add(e.getType() + ": " + e.getDescription() + " on " + e.getDate());
+        }
+    }
+
+    // ---------------- Utility ----------------
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
-    /**
-     *          // add code, implement polymorphism here
-     *          // use RSVP class to make list of emails and users, stores it
-     *          // later, needs to ensure 1 checkbox is selected, email entered, and
-     *          // button is clicked in order to make new RSVP object
-     *
-     *     // basic code maybe?
-     *     private void rsvpButtonPressed(ActionEvent event) {
-     *     String userType = "";
-     *     if (userStudentCheckBox.isSelected()) {
-     *         userType = "Student";
-     *     } else if (userFacultyCheckBox.isSelected()) {
-     *         userType = "Faculty";
-     *     } else if (userVisitorCheckBox.isSelected()) {
-     *         userType = "Visitor";
-     *     }
-     *
-     *
-     */
-    @FXML
-    private void rsvpButtonPressed(ActionEvent event) {
-
-    }
 }
-
-

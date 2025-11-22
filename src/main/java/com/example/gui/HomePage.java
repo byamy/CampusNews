@@ -1,27 +1,19 @@
-/**
- * Launcher
- *
- */
-
 package com.example.gui;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class HomePage extends Application{
+public class HomePage extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
+        // Set the primary stage in SceneSwitch
         SceneSwitch.setStage(stage);
 
-        Parent root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+        // Switch to homepage.fxml
+        SceneSwitch.goTo("homepage.fxml");
 
-        Scene scene = new Scene(root);
-        stage.setTitle("homepage");
-        stage.setScene(scene);
+        stage.setTitle("Campus News Homepage");
         stage.show();
     }
 
