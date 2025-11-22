@@ -99,6 +99,13 @@
 
         <Button fx:id="rsvpButton" text="RSVP" style="-fx-background-color: GOLD;" GridPane.columnIndex="3" GridPane.rowIndex="2" onAction="#rsvpButtonPressed"/>
         <Button fx:id="returnHomeButton" text="RETURN HOME" style="-fx-background-color: GOLD;" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="LEFT" onAction="#returnHomeButtonPressed"/>
+        <Button fx:id="viewDetailsButton"
+                text="VIEW DETAILS"
+                GridPane.rowIndex="3"
+                GridPane.columnIndex="3"
+                style="-fx-background-color: GOLD;"
+                onAction="#viewDetailsButtonPressed"/>
+
     </GridPane>
 </GridPane>
 

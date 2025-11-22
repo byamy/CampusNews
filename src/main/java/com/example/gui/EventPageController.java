@@ -1,16 +1,17 @@
 package com.example.gui;
 
-import com.campus.events.Events;
-import com.campus.events.Athletic;
 import com.campus.events.Academic;
+import com.campus.events.Athletic;
 import com.campus.events.Club;
+import com.campus.events.Events;
 import com.campus.model.EventsManager;
-
+import com.campus.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
 import java.util.Comparator;
 
 public class EventPageController {
@@ -26,78 +27,180 @@ public class EventPageController {
     @FXML private Button rsvpButton;
     @FXML private Button returnHomeButton;
 
-    // Master event list
-    private final ObservableList<Events> allEvents = FXCollections.observableArrayList();
-
-    // Type-specific lists
-    private final ObservableList<Events> athleticEvents = FXCollections.observableArrayList();
-    private final ObservableList<Events> clubEvents = FXCollections.observableArrayList();
-    private final ObservableList<Events> academicEvents = FXCollections.observableArrayList();
+    // Master event list (same objects as in EventsManager)
+    private final ObservableList<Events> allEvents       = FXCollections.observableArrayList();
+    private final ObservableList<Events> athleticEvents  = FXCollections.observableArrayList();
+    private final ObservableList<Events> clubEvents      = FXCollections.observableArrayList();
+    private final ObservableList<Events> academicEvents  = FXCollections.observableArrayList();
 
     // ---------------- Initialization ----------------
     @FXML
     public void initialize() {
-        // Pull all events from EventsManager
+        // Load events from EventsManager
         allEvents.clear();
         allEvents.addAll(EventsManager.getAllEvents());
 
-        // Refresh the lists so each ListView shows events by type and sorted by date
+        // Show them in the three columns
         refreshEventLists();
     }
 
-    // ---------------- Event Handlers ----------------
+    // ---------------- Checkbox / field handlers (optional logging) ----------------
+
     @FXML private void userStudentCheckBoxAction(ActionEvent event) {
-        System.out.println("Student checkbox toggled: " + userStudentCheckBox.isSelected());
+        // If you want only one checked at a time:
+        if (userStudentCheckBox.isSelected()) {
+            userFacultyCheckBox.setSelected(false);
+            userVisitorCheckBox.setSelected(false);
+        }
     }
 
     @FXML private void userFacultyCheckBoxAction(ActionEvent event) {
-        System.out.println("Faculty checkbox toggled: " + userFacultyCheckBox.isSelected());
+        if (userFacultyCheckBox.isSelected()) {
+            userStudentCheckBox.setSelected(false);
+            userVisitorCheckBox.setSelected(false);
+        }
     }
 
     @FXML private void userVisitorCheckBoxAction(ActionEvent event) {
-        System.out.println("Visitor checkbox toggled: " + userVisitorCheckBox.isSelected());
+        if (userVisitorCheckBox.isSelected()) {
+            userStudentCheckBox.setSelected(false);
+            userFacultyCheckBox.setSelected(false);
+        }
     }
 
     @FXML private void userEmailEntered(ActionEvent event) {
-        System.out.println("User email entered: " + userEmail.getText());
+        numPeople.requestFocus();
     }
 
     @FXML private void numPeopleEntered(ActionEvent event) {
-        System.out.println("# of people entered: " + numPeople.getText());
+        rsvpButtonPressed(null);
     }
 
-    @FXML private void rsvpButtonPressed(ActionEvent event) {
-        showAlert("RSVP", "RSVP functionality not implemented yet.");
-    }
+    // ---------------- RSVP logic ----------------
 
-    @FXML private void returnHomeButtonPressed(ActionEvent event) {
-        SceneSwitch.goTo("homepage.fxml");
-    }
-
-    // ---------------- Event Management ----------------
-    public void addEvent(Events event) {
-        allEvents.add(event);
-
-        if (event instanceof Athletic) {
-            athleticEvents.add(event);
-        } else if (event instanceof Club) {
-            clubEvents.add(event);
-        } else if (event instanceof Academic) {
-            academicEvents.add(event);
+    @FXML
+    private void rsvpButtonPressed(ActionEvent event) {
+        Events selectedEvent = getSelectedEvent();
+        if (selectedEvent == null) {
+            showAlert("Error", "Please select an event to RSVP for.");
+            return;
         }
 
-        // Refresh all lists and sort them
+        String email = userEmail.getText().trim();
+        if (email.isEmpty()) {
+            showAlert("Error", "Please enter your email.");
+            return;
+        }
+
+        int peopleCount = 1;
+        String numText = numPeople.getText().trim();
+        if (!numText.isEmpty()) {
+            try {
+                peopleCount = Integer.parseInt(numText);
+                if (peopleCount <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                showAlert("Error", "'# of People' must be a positive whole number.");
+                return;
+            }
+        }
+
+        String role = "Attendee";
+        if (userStudentCheckBox.isSelected()) {
+            role = "Student";
+        } else if (userFacultyCheckBox.isSelected()) {
+            role = "Faculty";
+        } else if (userVisitorCheckBox.isSelected()) {
+            role = "Visitor";
+        }
+
+        // Add one RSVP entry per person (so count = list size)
+        for (int i = 0; i < peopleCount; i++) {
+            selectedEvent.addRSVP(new User(role, email));
+        }
+
+        showAlert("RSVP Confirmed",
+                "You RSVP'd " + peopleCount + " person(s) to:\n" + selectedEvent.getDescription());
+
+        // Reload display (including RSVP counts)
         refreshEventLists();
+
+        // Optional: clear inputs
+        numPeople.clear();
+    }
+
+    private Events getSelectedEvent() {
+        // Find which column has a selection and map index -> Events object
+        int index = athleticEvent.getSelectionModel().getSelectedIndex();
+        if (index >= 0 && index < athleticEvents.size()) {
+            return athleticEvents.get(index);
+        }
+
+        index = clubEvent.getSelectionModel().getSelectedIndex();
+        if (index >= 0 && index < clubEvents.size()) {
+            return clubEvents.get(index);
+        }
+
+        index = academicEvent.getSelectionModel().getSelectedIndex();
+        if (index >= 0 && index < academicEvents.size()) {
+            return academicEvents.get(index);
+        }
+
+        return null;
     }
 
     @FXML
+    private void returnHomeButtonPressed(ActionEvent event) {
+        SceneSwitch.goTo("homepage.fxml");
+    }
+
+    @FXML
+    private void viewDetailsButtonPressed(ActionEvent event) {
+        Events selected = getSelectedEvent();
+
+        if (selected == null) {
+            showAlert("Error", "Please select an event first.");
+            return;
+        }
+
+        // Build popup text
+        String details =
+                "Title: " + selected.getTitle() + "\n" +
+                        "Description: " + selected.getDescription() + "\n" +
+                        "Date: " + selected.getDate() + "\n" +
+                        "Time: " + selected.getTime() + "\n" +
+                        "Location: " + selected.getLocation() + "\n" +
+                        "RSVP Count: " + selected.getRsvpCount();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Event Details");
+        alert.setHeaderText(selected.getTitle());
+        alert.setContentText(details);
+
+        // Make it match your app’s teal/gold theme
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle(
+                "-fx-background-color: TEAL;" +
+                        "-fx-font-size: 14px;" +
+                        "-fx-text-fill: white;"
+        );
+
+        alert.showAndWait();
+    }
+
+
+    // ---------------- Event Management ----------------
+
+    // This can be called if another controller wants to refresh events
+    @FXML
     public void refreshEventLists() {
-        // Clear type-specific lists
+        // Ensure we use the latest events from the manager
+        allEvents.clear();
+        allEvents.addAll(EventsManager.getAllEvents());
+
         athleticEvents.clear();
         clubEvents.clear();
         academicEvents.clear();
 
-        // Add events to the respective lists
         for (Events e : allEvents) {
             if (e instanceof Athletic) {
                 athleticEvents.add(e);
@@ -108,12 +211,11 @@ public class EventPageController {
             }
         }
 
-        // Sort each list by date
-        FXCollections.sort(athleticEvents, Comparator.comparing(Events::getDate));
-        FXCollections.sort(clubEvents, Comparator.comparing(Events::getDate));
-        FXCollections.sort(academicEvents, Comparator.comparing(Events::getDate));
+        // Sort by date using LocalDate helper
+        FXCollections.sort(athleticEvents, Comparator.comparing(Events::getDateAsLocalDate));
+        FXCollections.sort(clubEvents, Comparator.comparing(Events::getDateAsLocalDate));
+        FXCollections.sort(academicEvents, Comparator.comparing(Events::getDateAsLocalDate));
 
-        // Update the ListViews
         updateListView(athleticEvent, athleticEvents);
         updateListView(clubEvent, clubEvents);
         updateListView(academicEvent, academicEvents);
@@ -122,9 +224,10 @@ public class EventPageController {
     private void updateListView(ListView<String> listView, ObservableList<Events> events) {
         listView.getItems().clear();
         for (Events e : events) {
-            listView.getItems().add(e.getType() + ": " + e.getDescription() + " on " + e.getDate());
+            listView.getItems().add(e.getTitle());
         }
     }
+
 
     // ---------------- Utility ----------------
     private void showAlert(String title, String message) {
@@ -134,6 +237,4 @@ public class EventPageController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
 }

@@ -37,10 +37,16 @@ public class DeletePageController {
     void deleteButtonAction(ActionEvent event) {
         Events selectedEvent = deleteListView.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            User creator = selectedEvent.getCreator();
-            if (creator.getUsername().equals(delete850.getText()) &&
-                    creator.getEmail().equals(deleteEmail.getText())) {
-                EventsManager.deleteEvent(selectedEvent);
+            String entered850   = delete850.getText().trim();
+            String enteredEmail = deleteEmail.getText().trim();
+
+            if (entered850.isEmpty() || enteredEmail.isEmpty()) {
+                errorLabel.setText("Please enter both 850 number and email.");
+                return;
+            }
+
+            boolean removed = EventsManager.deleteEvent(selectedEvent, entered850, enteredEmail);
+            if (removed) {
                 deleteListView.getItems().remove(selectedEvent);
                 errorLabel.setText("Event deleted successfully!");
             } else {
@@ -50,6 +56,7 @@ public class DeletePageController {
             errorLabel.setText("No event selected.");
         }
     }
+
 
     @FXML
     private void deleteEmailEntered(ActionEvent event) {

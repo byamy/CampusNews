@@ -52,6 +52,11 @@ public abstract class Events {
 
     public List<User> getRsvpedUsers() { return rsvpedUsers; }
 
+    public int getRsvpCount() {
+        return rsvpedUsers.size();
+    }
+
+
     public LocalDate getDateAsLocalDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         return LocalDate.parse(this.date, formatter);
