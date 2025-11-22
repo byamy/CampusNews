@@ -6,12 +6,19 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+
 
 
 public class EventPageController {
 
     @FXML
     private TextField numPeople;
+
+    @FXML
+    private ListView<String> listView;
 
     @FXML
     private CheckBox userStudentCheckBox;
@@ -36,17 +43,35 @@ public class EventPageController {
 
     @FXML
     private void userStudentCheckBoxAction(ActionEvent event) {
-        userStudentCheckBox.setSelected(true);
+        if (userStudentCheckBox.isSelected()){
+            System.out.println("Checked");
+        }
+        else{
+            System.out.println("Unchecked");
+        }
+
+
+
     }
 
     @FXML
     private void userFacultyCheckBoxAction(ActionEvent event) {
-        userFacultyCheckBox.setSelected(true);
-    }
+
+        if (userFacultyCheckBox.isSelected()){
+            System.out.println("Checked");
+        }
+        else{
+            System.out.println("Unchecked");
+    }}
 
     @FXML
     private void userVisitorCheckBoxAction(ActionEvent event) {
-        userVisitorCheckBox.setSelected(true);
+        if (userVisitorCheckBox.isSelected()){
+            System.out.println("Checked");
+        }
+        else{
+            System.out.println("Unchecked");
+        }
     }
 
 
@@ -76,6 +101,21 @@ public class EventPageController {
      *      // to be itemized so a user can click a specific event when rsvp or simply look
      *
      */
+
+    private ObservableList<String> eventDetails = FXCollections.observableArrayList();
+    @FXML
+    private void initialize(){
+
+        listView.setItems(eventDetails);
+
+    }
+    public void setListView(ObservableList<String>eventDetails){
+        this.eventDetails.addAll(eventDetails);
+    }
+
+
+
+
     @FXML
     private void eventDisplayClicked(ActionEvent event) {
 

@@ -22,4 +22,14 @@ public class SceneSwitch {
             e.printStackTrace();
         }
     }
+
+    /**
+     * overloaded method for parent root for list transfer
+     * @param root
+     */
+    public static void goTo(Parent root){
+        mainStage.setScene(new Scene(root));
+        mainStage.show();
+
+    }
 }
