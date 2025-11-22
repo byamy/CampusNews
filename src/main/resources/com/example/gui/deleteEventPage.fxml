@@ -20,7 +20,7 @@
         <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="413.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label prefHeight="53.0" prefWidth="394.0" text="UNCW Seahawk Events" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="394.0" text="Delete UNCW Event" textAlignment="CENTER" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <font>
                 <Font name="System Bold" size="36.0" />
             </font>
@@ -42,43 +42,37 @@
                 <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="60.666666666666686" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <TextField fx:id="delete850" onAction="#delete850Entered" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                <TextField fx:id="deleteEmail" onAction="#deleteEmailEntered" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                <Label text="850 number:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <TextField fx:id="delete850" onAction="#delete850Entered" promptText="enter 9 digit 850" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                <TextField fx:id="deleteEmail" onAction="#deleteEmailEntered" promptText="example@uncw.edu" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                <Label text="850 number:" textFill="#132970" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label text="UNCW email:" textFill="#ffd942" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                <Label text="UNCW email:" textFill="#132970" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label prefWidth="376.0" text="Please enter the following information:" textFill="#ffd942" GridPane.columnIndex="3">
+                <Label prefWidth="376.0" text="Please enter the following information:" textFill="#132970" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Button fx:id="deleteEventButton" mnemonicParsing="false" onAction="#deleteButtonAction"
-                        style="-fx-background-color: GOLD;" text="DELETE EVENT"
-                        GridPane.columnIndex="3" GridPane.halignment="RIGHT"
-                        GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <Button fx:id="deleteEventButton" mnemonicParsing="false" onAction="#deleteButtonAction" style="-fx-background-color: GOLD;" text="DELETE EVENT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
 
-                <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed"
-                        style="-fx-background-color: gold;" text="RETURN HOME"
-                        GridPane.columnIndex="3" GridPane.halignment="LEFT"
-                        GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <Button fx:id="returnHomeButton" mnemonicParsing="false" onAction="#returnHomeButtonPressed" style="-fx-background-color: gold;" text="RETURN HOME" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
 
                 <!-- ✅ Updated ListView with fx:id -->
-                <ListView fx:id="deleteListView"
-                          prefHeight="183.0"
-                          prefWidth="273.0"
-                          GridPane.columnIndex="3"
-                          GridPane.rowIndex="4" />
+                <ListView fx:id="deleteListView" prefHeight="183.0" prefWidth="273.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
 
-                <Label fx:id="errorLabel" alignment="CENTER"
-                       prefWidth="376.0" textFill="#fdf6f5"
-                       GridPane.columnIndex="3" GridPane.rowIndex="3">
+                <Label fx:id="errorLabel" alignment="CENTER" prefWidth="376.0" textFill="#fdf6f5" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
 
                 <font>
                         <Font name="System Bold" size="12.0" />
@@ -86,6 +80,5 @@
                 </Label>
             </children>
         </GridPane>
-        <Label text="Label" GridPane.rowIndex="1" />
     </children>
 </GridPane>
