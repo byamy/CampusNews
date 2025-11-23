@@ -121,7 +121,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                            <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" prefWidth="306.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+                            <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" prefWidth="306.0" promptText="Split title and description with a '-'" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
             
                                                                                                                 <!-- Event Type -->
                             <Label text="Event Type:" textFill="#132970" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="8">

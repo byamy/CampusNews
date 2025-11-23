@@ -94,7 +94,7 @@ public class DeletePageController {
     public void initialize() {
         // Populate ListView with all events
         deleteListView.getItems().addAll(EventsManager.getAllEvents());
-        // Optional: set custom cell factory for nicer display
+
         deleteListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Events e, boolean empty) {
