@@ -40,6 +40,7 @@ public class CreatePageController {
     @FXML private Button createEventButton;
     @FXML private Button returnHomeButton;
 
+
     @FXML
     public void initialize() {
         // Populate event type dropdown
@@ -53,7 +54,7 @@ public class CreatePageController {
                 setDisable(empty || date.isBefore(LocalDate.now()));
             }
         });
-// TimePicker given 15 minute intervals
+        // Populates Time Picker with 15 minute intervals from 6 to 23:45
         ObservableList<String> times = FXCollections.observableArrayList();
         LocalTime t = LocalTime.of(6, 0); // Start earliest time
         while (!t.equals(LocalTime.of(23, 45))) {//add intervals of 15minutes starting at 6:00am
@@ -65,20 +66,28 @@ public class CreatePageController {
 
     }
 
+    /**
+     * Purpose - Takes all selected and inputted values and creates a new event and user instance
+     * @param event
+     */
     @FXML
     private void createEventButtonPressed(ActionEvent event) {
-        String creatorId   = creator850.getText().trim();   // 850 number
-        String creatorMail = creatorEmail.getText().trim(); // UNCW email
+        // 850 and Email
+        String creatorId   = creator850.getText().trim();
+        String creatorMail = creatorEmail.getText().trim();
 
+        // Date
         LocalDate dateValue = eventDatePicker.getValue();
         String date = (dateValue == null) ? "" : dateValue.toString();
 
+        // Time
         String time = eventTimePicker.getSelectionModel().getSelectedItem();
         if (time == null) {
             showAlert("Error", "Please select a time.");
             return;
         }
 
+        // Text boxes and type
         String location    = eventLocation.getText().trim();
         String description = eventDescription.getText().trim();
         String type        = eventTypeSelector.getSelectionModel().getSelectedItem();
@@ -97,10 +106,24 @@ public class CreatePageController {
             return;
         }
 
+        //Prompts user if title and description are not split
         if (description.matches("\\s-\\s")){
             showAlert("Invalid Input","Must match the format: Title-Description");
         }
 
+        //Prompts user if there is no hyphen
+        if (!description.contains("-")) {
+            showAlert("Invalid Input", "Must match the format: Title-Description");
+            return;
+        }
+
+        //Prompts user if Field is left empty
+        if (description.isEmpty()) {
+            showAlert("Invalid Input", "Description cannot be empty. Please enter a Title-Description.");
+            return;
+        }
+
+        // Splits description into title and description
         String[] description2 = description.split("-",2);
         String title = description2[0];
         description = description2[1];
@@ -151,14 +174,14 @@ public class CreatePageController {
         }
     }
 
-
+    //Takes user to homepage
     @FXML
     private void returnHomeButtonPressed(ActionEvent event) {
         SceneSwitch.goTo("homepage.fxml");
     }
 
-    //
 
+    // Allows user to press enter to move to next field when done
     @FXML private void creator850Entered(ActionEvent event)
     { creatorEmail.requestFocus(); }
     @FXML private void creatorEmailEntered(ActionEvent event)

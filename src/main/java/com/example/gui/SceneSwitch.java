@@ -42,8 +42,7 @@ public class SceneSwitch {
         return loader;
     }
 
-    // get the primary stage anywhere
-
+    // get the primary stage anywhere if needed
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

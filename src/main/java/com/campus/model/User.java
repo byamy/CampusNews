@@ -11,6 +11,7 @@ public class User {
     private String email;
 
 
+    //Constructor
     public User(String username, String email) {
         this.username = username;
         this.email = email;

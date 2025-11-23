@@ -22,7 +22,6 @@ public class HomePageController {
      * methods/ action Events
      * createEventButtonPressed- switched the scene to the Create Event page
      * viewEventButtonPressed - checks the available events that they are by switching to the event page
-     * returnHomeButtonPressed- not used
      * deleteEventButtonPressed- Switch window to the Delete Screen
      */
 
@@ -35,12 +34,6 @@ public class HomePageController {
     @FXML
     private void viewEventButtonPressed(ActionEvent event) {
         SceneSwitch.goTo("eventPage.fxml");
-    }
-
-
-    @FXML
-    private void returnHomeButtonPressed(ActionEvent event) {
-        // Handle returning to home if needed
     }
 
     @FXML

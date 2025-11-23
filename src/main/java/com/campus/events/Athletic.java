@@ -10,6 +10,7 @@ import com.campus.model.User;
  */
 public class Athletic extends Events {
 
+    //Constructor
     public Athletic(String title, String description, String date, String time, String location, User creator) {
         super(title, description, date, time, location, creator);
     }

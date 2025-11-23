@@ -55,7 +55,7 @@ public class EventPageController {
     }
 
 
-
+    // Potential add in for different types of users
     @FXML private void userStudentCheckBoxAction(ActionEvent event) {
 
         if (userStudentCheckBox.isSelected()) {
@@ -95,19 +95,24 @@ public class EventPageController {
     @FXML
     private void rsvpButtonPressed(ActionEvent event) {
         Events selectedEvent = getSelectedEvent();//allow events to be recognized as highlighted
+
+        //Prompts the user if they did not select and event
         if (selectedEvent == null) {
             showAlert("Error", "Please select an event to RSVP for.");
             return;
         }
 
+        //Prompts the user is they did not enter an email
         String email = userEmail.getText().trim();
         if (email.isEmpty()) {
             showAlert("Error", "Please enter your email.");
             return;
         }
 
+        //Adds to RSVP count == to number of people
         int peopleCount = 1;
         String numText = numPeople.getText().trim();
+        //If no number is given then it assumes 1
         if (!numText.isEmpty()) {
             try {
                 peopleCount = Integer.parseInt(numText);
@@ -167,6 +172,7 @@ public class EventPageController {
         return null;
     }
 
+    //Takes user back to homepage
     @FXML
     private void returnHomeButtonPressed(ActionEvent event) {
         SceneSwitch.goTo("homepage.fxml");
@@ -181,13 +187,13 @@ public class EventPageController {
     @FXML
     private void viewDetailsButtonPressed(ActionEvent event) {
         Events selected = getSelectedEvent();
-
+        //Prompts user if no event was selected
         if (selected == null) {
             showAlert("Error", "Please select an event first.");
             return;
         }
 
-
+        //Gets details for selected event and displays them in an alert
         String details =
                 "Title: " + selected.getTitle() + "\n" +
                         "Description: " + selected.getDescription() + "\n" +
@@ -215,7 +221,8 @@ public class EventPageController {
 
 
 
-    // Method to allow other controllers to refresh the event lists so create and delete can affect main lists
+    // Method to allow other controllers to refresh the event lists
+    // Allows creating and deleting an event to update the view events page when they add or remove and event
     @FXML
     public void refreshEventLists() {
         // Ensure we use the latest events from the manager

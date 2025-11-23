@@ -53,6 +53,7 @@ public class DeletePageController {
             String entered850   = delete850.getText().trim();
             String enteredEmail = deleteEmail.getText().trim();
 
+            // Prompts the user if no 850 or email was entered
             if (entered850.isEmpty() || enteredEmail.isEmpty()) {
                 errorLabel.setText("Please enter both 850 number and email.");
                 return;
@@ -72,17 +73,17 @@ public class DeletePageController {
 
     /**
      *
-     * deleteEmailEntered and delete850Entered is unnecessary  due to the button Action so we might delete
+     * deleteEmailEntered and delete850Entered used in FXML to handle
      * @param event
      */
     @FXML
     private void deleteEmailEntered(ActionEvent event) {
-        // optional: handle Enter pressed in email field
+
     }
 
     @FXML
     private void delete850Entered(ActionEvent event) {
-        // optional: handle Enter pressed in 850# field
+
     }
 
     /**

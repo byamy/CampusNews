@@ -25,11 +25,13 @@ public class EventsManager {
         return allEvents;
     }
 
+    // Adds event to list and sorts list by date and time
     public static void addEvent(Events event) {
         allEvents.add(event);
         allEvents.sort(Comparator.comparing(Events::getDateAsLocalDate));
     }
 
+    // Deletes event from list if 850 and email matches creators 850 and email
     public static boolean deleteEvent(Events event, String username, String email) {
         User creator = event.getCreator();
         if (creator.getUsername().equals(username) && creator.getEmail().equals(email)) {
@@ -38,6 +40,8 @@ public class EventsManager {
         return false;
     }
 
+
+    // List for AthleticEvents
     public static List<Events> getAthleticEvents() {
         return allEvents.stream()
                 .filter(e -> e instanceof Athletic)
@@ -45,6 +49,7 @@ public class EventsManager {
                 .collect(Collectors.toList());
     }
 
+    //List for AcademicEvents
     public static List<Events> getAcademicEvents() {
         return allEvents.stream()
                 .filter(e -> e instanceof Academic)
@@ -52,6 +57,7 @@ public class EventsManager {
                 .collect(Collectors.toList());
     }
 
+    //List for ClubEvents
     public static List<Events> getClubEvents() {
         return allEvents.stream()
                 .filter(e -> e instanceof Club)

@@ -18,10 +18,10 @@ public abstract class Events implements RSVPable {
     private String date;
     private String time;
     private String location;
-
     private User creator;
     private List<User> rsvpedUsers;
 
+    // Constructor
     public Events(String title, String description, String date, String time, String location, User creator) {
         this.title = title;
         this.description = description;
