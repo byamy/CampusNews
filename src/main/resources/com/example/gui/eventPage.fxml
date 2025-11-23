@@ -33,9 +33,9 @@
                 </rowConstraints>
             
                   
-                      <Label text="UNCW Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                      <Label text="Seahawk Events" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                     <font>
-                        <Font name="System Bold" size="36" />
+                        <Font name="System Bold" size="28.0" />
                     </font>
                 </Label>
             
