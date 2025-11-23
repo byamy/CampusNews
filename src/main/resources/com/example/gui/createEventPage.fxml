@@ -22,7 +22,7 @@
          <children>
             <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: TEAL; -fx-border-color: midnightblue;">
             
-                                                                      <!-- Top and bottom padding for breathing room -->
+
                 <padding>
                     <Insets bottom="20.0" top="20.0" />
                 </padding>
@@ -33,20 +33,20 @@
             
                                                                       <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="70.0" />
-                    <RowConstraints prefHeight="70.0" />     <!-- Title -->
-                    <RowConstraints prefHeight="360.0" />    <!-- Form -->
+                    <RowConstraints prefHeight="70.0" />
+                    <RowConstraints prefHeight="360.0" />
                 </rowConstraints>
             
                                                                       <children>
             
-                                                                                      <!-- TITLE -->
+
                     <Label alignment="CENTER" text="Create Event" textFill="#ffd942" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                         <font>
                             <Font name="System Bold" size="28.0" />
                         </font>
                     </Label>
             
-                                                                                                        <!-- MAIN INPUT FORM -->
+
                     <GridPane hgap="12" vgap="12" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                         <padding>
                             <Insets left="20" right="20" top="10" />
@@ -55,7 +55,7 @@
                                                                                                             <columnConstraints>
                             <ColumnConstraints />
                             <ColumnConstraints maxWidth="337.0" minWidth="179.0" prefWidth="318.0" />
-                            <ColumnConstraints maxWidth="154.0" minWidth="84.0" prefWidth="107.0" /> <!-- for side-by-side buttons -->
+                            <ColumnConstraints maxWidth="154.0" minWidth="84.0" prefWidth="107.0" />
                         </columnConstraints>
             
                                                                                                             <rowConstraints>
@@ -67,15 +67,15 @@
                             <RowConstraints maxHeight="39.0" minHeight="18.0" prefHeight="28.0" valignment="CENTER" vgrow="ALWAYS" />
                             <RowConstraints maxHeight="36.0" minHeight="16.0" prefHeight="16.0" valignment="CENTER" vgrow="ALWAYS" />
                             <RowConstraints maxHeight="36.0" minHeight="18.0" prefHeight="31.0" valignment="CENTER" vgrow="ALWAYS" />
-                            <RowConstraints maxHeight="32.0" minHeight="7.0" prefHeight="12.0" valignment="CENTER" vgrow="ALWAYS" /> <!-- buttons -->
+                            <RowConstraints maxHeight="32.0" minHeight="7.0" prefHeight="12.0" valignment="CENTER" vgrow="ALWAYS" />
                             <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
                         <RowConstraints maxHeight="74.0" minHeight="23.0" prefHeight="74.0" valignment="CENTER" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="5.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="ALWAYS" /> <!-- preview list -->
+                        <RowConstraints maxHeight="5.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
                         </rowConstraints>
             
                                                                                                             <children>
             
-                                                                                                                <!-- 850 Number -->
+
                             <Label text="850 Number:" textFill="#132970" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -83,7 +83,7 @@
                         </Label>
                             <TextField fx:id="creator850" onAction="#creator850Entered" promptText="enter 9 digit 850" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             
-                                                                                                                <!-- Email -->
+
                             <Label text="UNCW Email:" textFill="#132970" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -91,7 +91,7 @@
                         </Label>
                             <TextField fx:id="creatorEmail" onAction="#creatorEmailEntered" promptText="example@uncw.edu" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             
-                                                                                                                <!-- Event Date -->
+
                             <Label text="Event Date:" textFill="#132970" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -99,7 +99,7 @@
                         </Label>
                             <DatePicker fx:id="eventDatePicker" onAction="#eventDateEntered" promptText="MM/DD/YEAR" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
             
-                                                                                                                <!-- Event Time -->
+
                             <Label text="Event Time:" textFill="#132970" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -107,7 +107,7 @@
                         </Label>
                             <ComboBox fx:id="eventTimePicker" onAction="#eventTimeEntered" promptText="Select Time" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
             
-                                                                                                                <!-- Location -->
+
                             <Label text="Event Location:" textFill="#132970" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -115,7 +115,7 @@
                         </Label>
                             <TextField fx:id="eventLocation" onAction="#eventLocationEntered" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
             
-                                                                                                                <!-- Description -->
+
                             <Label text="Event Description:" textFill="#132970" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -123,7 +123,7 @@
                         </Label>
                             <TextField fx:id="eventDescription" onAction="#eventDescriptionEntered" prefWidth="306.0" promptText="Split title and description with a '-'" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
             
-                                                                                                                <!-- Event Type -->
+
                             <Label text="Event Type:" textFill="#132970" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -131,7 +131,7 @@
                         </Label>
                             <ComboBox fx:id="eventTypeSelector" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8" />
             
-                                                                                                                <!-- BUTTONS SIDE BY SIDE -->
+
                             <Button fx:id="createEventButton" onAction="#createEventButtonPressed" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: GOLD;" text="CREATE EVENT" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="8">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -144,7 +144,7 @@
                            </font>
                         </Button>
             
-                                                                                                                <!-- BOTTOM PREVIEW BOX (lifted) -->
+
                             <ListView fx:id="eventListView" prefHeight="54.0" prefWidth="552.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
                         </children>
                     </GridPane>
