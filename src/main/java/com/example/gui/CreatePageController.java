@@ -97,9 +97,13 @@ public class CreatePageController {
             return;
         }
 
+        if (description.matches("\\s-\\s")){
+            showAlert("Invalid Input","Must match the format: Title-Description");
+        }
 
-
-        String title = description;
+        String[] description2 = description.split("-",2);
+        String title = description2[0];
+        description = description2[1];
 
         User creator = new User(creatorId, creatorMail);
         //Makes an object based on the Event type
