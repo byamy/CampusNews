@@ -2,6 +2,12 @@ package com.campus.events;
 
 import com.campus.model.User;
 
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * purpose to create an inherited subclass of Events,using Ovvride method of a super method
+ */
 public class Athletic extends Events {
 
     public Athletic(String title, String description, String date, String time, String location, User creator) {

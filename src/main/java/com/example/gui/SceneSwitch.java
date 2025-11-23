@@ -7,6 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * Purpose to have an easy-to-use method to switch scenes instead of redundent setting scenes and show stage snippets
+ *
+ */
 public class SceneSwitch {
 
     private static Stage primaryStage;
@@ -36,6 +43,7 @@ public class SceneSwitch {
     }
 
     // get the primary stage anywhere
+
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

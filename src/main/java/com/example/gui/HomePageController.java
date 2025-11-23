@@ -8,7 +8,24 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * Purpose the Controller gui for the homepage.fxml
+ */
 public class HomePageController {
+    /**
+     *
+     *
+     * methods/ action Events
+     * createEventButtonPressed- switched the scene to the Create Event page
+     * viewEventButtonPressed - checks the available events that they are by switching to the event page
+     * returnHomeButtonPressed- not used
+     * deleteEventButtonPressed- Switch window to the Delete Screen
+     */
+
 
     @FXML
     private void createEventButtonPressed(ActionEvent event) {

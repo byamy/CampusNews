@@ -8,6 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * Purpose to Delete an event made previously by the user and won't allow anyone beside the original creator
+ *         of the event to delete it.
+ */
 public class DeletePageController {
 
     @FXML
@@ -33,6 +40,12 @@ public class DeletePageController {
         SceneSwitch.goTo("homepage.fxml");
     }
 
+    /**
+     *
+     * Purpose to delete an event by verifying if the Event_List has the creators 850 and email
+     * to verify its creator.
+     *
+     */
     @FXML
     void deleteButtonAction(ActionEvent event) {
         Events selectedEvent = deleteListView.getSelectionModel().getSelectedItem();
@@ -57,7 +70,11 @@ public class DeletePageController {
         }
     }
 
-
+    /**
+     *
+     * deleteEmailEntered and delete850Entered is unnecessary  due to the button Action so we might delete
+     * @param event
+     */
     @FXML
     private void deleteEmailEntered(ActionEvent event) {
         // optional: handle Enter pressed in email field
@@ -68,6 +85,10 @@ public class DeletePageController {
         // optional: handle Enter pressed in 850# field
     }
 
+    /**
+     *
+     * Purpose Display the list of current events active and allow user to select an event to delete.
+     */
     @FXML
     public void initialize() {
         // Populate ListView with all events

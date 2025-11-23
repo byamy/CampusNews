@@ -14,7 +14,16 @@ import javafx.scene.control.*;
 
 import java.util.Comparator;
 
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * Purpose Initiliazing EventList and showing Events from createPage controller.
+ * param   takes in information as a ArrayList from CreatePageController and
+ *         utilizes the infomation in a list format.
+ */
 public class EventPageController {
+
 
     @FXML private ListView<String> athleticEvent;
     @FXML private ListView<String> clubEvent;
@@ -77,11 +86,15 @@ public class EventPageController {
         rsvpButtonPressed(null);
     }
 
-    // RSVP Button
+    /**
+     *
+     * Purpose to sign up to an available event with a number of people and an email to reference by
+     * param   uses the Action Event
+     */
 
     @FXML
     private void rsvpButtonPressed(ActionEvent event) {
-        Events selectedEvent = getSelectedEvent();
+        Events selectedEvent = getSelectedEvent();//allow events to be recognized as highlighted
         if (selectedEvent == null) {
             showAlert("Error", "Please select an event to RSVP for.");
             return;
@@ -104,7 +117,7 @@ public class EventPageController {
                 return;
             }
         }
-
+        //to add the counter for user in that selected event
         String role = "Attendee";
         if (userStudentCheckBox.isSelected()) {
             role = "Student";
@@ -129,6 +142,11 @@ public class EventPageController {
         numPeople.clear();
     }
 
+    /**
+     *
+     * Purpose To force user to select an event under the three categories provided
+     *
+     */
     private Events getSelectedEvent() {
 
         int index = athleticEvent.getSelectionModel().getSelectedIndex();
@@ -154,6 +172,12 @@ public class EventPageController {
         SceneSwitch.goTo("homepage.fxml");
     }
 
+    /**
+     *
+     * Purpose To show a Pop-up of the Event Name and details of the Event including, time, location, counter of
+     * people, and a description of the event.
+     *
+     */
     @FXML
     private void viewDetailsButtonPressed(ActionEvent event) {
         Events selected = getSelectedEvent();
@@ -171,7 +195,7 @@ public class EventPageController {
                         "Time: " + selected.getTime() + "\n" +
                         "Location: " + selected.getLocation() + "\n" +
                         "RSVP Count: " + selected.getRsvpCount();
-
+        //develop the alert popup screen when details is pressed
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Event Details");
         alert.setHeaderText(selected.getTitle());
@@ -224,7 +248,7 @@ public class EventPageController {
 
     private void updateListView(ListView<String> listView, ObservableList<Events> events) {
         listView.getItems().clear();
-        for (Events e : events) {
+        for (Events e : events) {//for events itll refresh the events list with either new events or events that didn't get shown
             listView.getItems().add(e.getTitle());
         }
     }

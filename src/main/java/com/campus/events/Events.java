@@ -6,6 +6,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Group 2
+ * Date 11/22/25
+ * Purpose
+ */
 public abstract class Events implements RSVPable {
 
     private String title;
@@ -31,13 +36,53 @@ public abstract class Events implements RSVPable {
     public abstract String getEventType();
 
     // Getters/setters
+
+    /**
+     *
+     *
+     * @return String title
+     */
     public String getTitle() { return title; }
+
+    /**
+     *
+     *
+     * @return String description
+     */
     public String getDescription() { return description; }
+
+    /**
+     *
+     *
+     * @return String date
+     */
     public String getDate() { return date; }
+
+    /**
+     *
+     *
+     * @return String time
+     */
     public String getTime() { return time; }
+
+    /**
+     *
+     * @return String location
+     */
     public String getLocation() { return location; }
 
+    /**
+     *
+     *
+     * @return user Datatype  creator from User class
+     */
     public User getCreator() { return creator; }
+
+    /**
+     *
+     * set creator to this instance.
+     * @param creator
+     */
     public void setCreator(User creator) { this.creator = creator; }
 
     // RSVPable implementation

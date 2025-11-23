@@ -10,6 +10,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author Group 2
+ * Date    11/22/25
+ * Purpose Have a centralized area for List of Academic, Athletic, and Club ArrayList for EventPageController,and
+ *         usage in the CreatePageController.
+ */
 public class EventsManager {
 
     private static final ObservableList<Events> allEvents = FXCollections.observableArrayList();
